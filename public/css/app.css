@@ -28,16 +28,54 @@ body {
   top: 18px;
 }
 
-.content {
-  text-align: center;
+body {
+  background-color: #eeeeee;
 }
 
-.content .results {
+.page .content {
+  text-align: center;
+  max-height: 95%;
+  padding-bottom: 10px;
+  max-width: 960px;
+  border-radius: 7px;
+}
+
+.page .content #number_of_people {
+  border-width: 1px;
+  width: 25%;
+  display: inline-block;
+  height: 35px;
+  margin-right: 5px;
+}
+
+.page .content #shuffle_button {
+  margin-bottom: 2px;
+}
+
+.page .content .results {
   text-align: left;
   margin: 5em;
+  min-height: 200px;
 }
 
-.title {
+.page .content .results .playerName,
+.page .content .results .playerHand {
+  display: inline-block;
+}
+
+.page .content .results .playerName {
+  padding-right: 0px;
+}
+
+.page .content .results .playerHand {
+  background: #e7e6e6;
+  padding: 2px 0px 5px 10px;
+  border-radius: 7px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.page .title {
   font-size: 84px;
 }
 
