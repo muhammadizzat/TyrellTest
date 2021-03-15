@@ -1,62 +1,35 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Tyrell Test</title>
+@section('content')
+<div class="page position-ref full-height flex-center">
+    <div class="content container align-self-center bg-light overflow-auto animate__animated animate__backInUp">
+        <div class="title m-b-md animate__animated animate__backInUp">
+            Let's Play
+        </div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    </head>
-    <body>
-        <div class="page position-ref full-height flex-center">
-            <div class="content container align-self-center bg-light overflow-auto">
-                <div class="title m-b-md">
-                    Let's Play
-                </div>
-
-                <div>
-                <form>
-                    <div class="form-group">
-                        <input id="number_of_people" type="number" class="form-control shadow" max="99" placeholder="No. of People"></input>
-                        <button id="shuffle_button" type="button" class="btn btn-primary shadow border-0" onclick="shuffleCards()">Shuffle</button>
-                    </div>
-                </div>
-
-                <div class="results">
-                </div>
-
-                <footer>
-                    <div class="row align-items-center justify-content-xl-between">
-                        <div class="col-xl-12">
-                            <div class="copyright text-center text-muted">
-                                &copy; {{ now()->year }} <a href="/" class="font-weight-bold ml-1" target="_blank">Develop by Muhammad Izzat</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-
+        <div>
+        <form>
+            <div class="form-group animate__animated animate__backInUp">
+                <input id="number_of_people" type="number" class="form-control shadow" max="99" placeholder="No. of People"></input>
+                <button id="shuffle_button" type="button" class="btn btn-primary shadow border-0" onclick="shuffleCards()">Shuffle</button>
             </div>
         </div>
 
-    </body>
-</html>
+        <div class="results">
+        </div>
 
-<!-- JQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <footer>
+            <div class="row align-items-center justify-content-xl-between">
+                <div class="col-xl-12">
+                    <div class="copyright text-center text-muted">
+                        &copy; {{ now()->year }} <a href="/" class="font-weight-bold ml-1" target="_blank">Develop by Muhammad Izzat</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-<!-- Bootstrap JS CDN -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    </div>
+</div>
 <script>
     // Create a function to distribute card
     function shuffleCards() {
@@ -97,8 +70,8 @@
                             `<span class="badge badge-primary">${card.cardTypes}-${card.cardValue}</span>`
                         ).join(", ");
                 $(".results").append(
-                    $('<div class="row">').append(
-                        `<div class="col-2 playerName">Player ${person+1} :</div>
+                    $('<div class="row animate__animated animate__backInLeft">').append(
+                        `<div class="col-2 playerName font-weight-bold">Player ${person+1} :</div>
                         <div class="col-10 playerHand">
                             ${player_hand}
                         </div>`
@@ -106,10 +79,12 @@
                 );
             }
         }
-
         else {
-            $(".results").html( `<h3>Input value does not exist or value is invalid</h3>` );
+            $(".results").html( `<div class="alert alert-danger animate__animated animate__shakeX" role="alert">
+                                    <h4 class="">Input value does not exist or value is invalid</h4>
+                                </div>` );
             return;
         }
     }
 </script>
+@endsection
