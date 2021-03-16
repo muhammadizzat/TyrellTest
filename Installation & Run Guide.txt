@@ -1,0 +1,11 @@
+Requirement :
+
+PHP7, Laravel Framework 7.30, Composer version 1.9.3
+
+Run Project Steps
+
+Run commands : 
+1) npm install
+2) composer install
+3) php artisan key:generate
+4) php artisan serve

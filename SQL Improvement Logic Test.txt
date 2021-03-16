@@ -1,0 +1,28 @@
+SQL Improvement Logic Test :
+
+1) Theres duplication of code at the WHERE filter "OR RecQualifications.name LIKE '%キャビンアテンダント%'
+2) Reduce the use of `LIKE` for text filter as it requires huge amount of computing power thus effect query performance. We reduce it by using FULL-Text Searching which is much more faster and more 	 less repeating code
+	Syntax : WHERE Match(
+	                		PositionCategories.name,
+	        				PositionTypes.name, 
+			        		Positions.name 
+			 				Positions.description, 
+			                Positions.detail, 
+			                Positions.business_skill, 
+			                Positions.knowledge, 
+			                Positions.location, 
+			                Positions.activity, 
+			                Positions.salary_statistic_group, 
+			                Positions.salary_range_remarks, 
+			                Positions.restriction, 
+			                Positions.remarks, 
+			                Personalities.name, 
+			                PracticalSkills.name, 
+			                BasicAbilities.name, 
+			                Tools.name, 
+			                CareerPaths.name, 
+			                RecQualifications.name
+		                )
+	         AGAINST ('キャビンアテンダント' IN NATURAL LANGUAGE MODE)
+
+
